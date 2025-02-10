@@ -8,9 +8,9 @@ import java.util.List;
 
 public class ConnectionPool {
     private static final int MAX_POOL_SIZE = 5;  // Maximum number of connections
-    private static final String URL = "jdbc:mysql://localhost:3306/Army";
+    private static final String URL = "jdbc:mysql://127.0.0.1:3307/Army";
     private static final String USER = "root";  // Change this to your database user
-    private static final String PASSWORD = "password"; // Change this to your database password
+    private static final String PASSWORD = "qwerty12345"; // Change this to your database password
     
     private static List<Connection> availableConnections = new ArrayList<>();
     private static List<Connection> usedConnections = new ArrayList<>();
