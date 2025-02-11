@@ -63,12 +63,12 @@ public class run {
 
 /*
 pytania
-dobra struktura?
-jak lepiej hierarchie klas zapisac?
-co w klasie abstractMySqlDao
-jak najlepiej implementowac wspieranie innych baz danych?
-czy dao do wszystkich implementowac?
-maven install not updating database?
+dobra struktura? dobra
+jak lepiej hierarchie klas zapisac? dobrze jest jak teraz
+co w klasie abstractMySqlDao to wrapper dla serwisu, powinien umożliwiac zmiany servisu bez potrzeby wywoływania zupełnie innych metod na poziomie maina
+jak najlepiej implementowac wspieranie innych baz danych? w abstractmysqlDao i odpowiednikach dla innych
+czy dao do wszystkich implementowac?  około 5 wystarczy
+jak robienie adnotacji do JAXD, Jackson, itd robi kopie klasy z innymi adnotacjami
 
 todo
 Implement Service layer with necessary abstraction to be able to switch between databases and frameworks.

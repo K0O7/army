@@ -16,6 +16,7 @@ public class Soldier {
         this.first_name = firstName;
         this.last_name = lastName;
     }
+    
 
 	public Soldier() {
 	}
