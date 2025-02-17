@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="SoldierTrainings">
+    	<xs:complexType>
+        	<xs:sequence>
+            	<xs:element name="SoldierTraining" maxOccurs="unbounded">
+                	<xs:complexType>
+                    	<xs:sequence>
+                        	<xs:element name="id" type="xs:long"/>
+                            <xs:element name="soldier_id" type="xs:long"/>
+                            <xs:element name="training_program_id" type="xs:long"/>
+                            <xs:element name="start_date" type="xs:date"/>
+                            <xs:element name="end_date" type="xs:date"/>
+                        </xs:sequence>
+                	</xs:complexType>
+            	</xs:element>
+        	</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

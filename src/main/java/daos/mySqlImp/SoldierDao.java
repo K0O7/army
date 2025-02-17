@@ -12,7 +12,7 @@ public class SoldierDao extends AbstractMySqlDao implements ISoldierDao {
 
 	@Override
 	public Soldier getById(long id) {
-		try(Connection con = ConnectionPool.getConnection()) {
+		try(Connection con = getConnection()) {
 			String sql = "SELECT * FROM Army.soldiers where id=?";
 			try (PreparedStatement ps = con.prepareStatement(sql)){
 				ps.setLong(1, id);
@@ -33,7 +33,7 @@ public class SoldierDao extends AbstractMySqlDao implements ISoldierDao {
 
 	@Override
 	public Soldier save(Soldier entity) {
-        try(Connection con = ConnectionPool.getConnection()) {
+        try(Connection con = getConnection()) {
             String sql = "INSERT INTO Army.soldiers (id, first_name, last_name) VALUES (?, ?, ?)";
             try (PreparedStatement ps = con.prepareStatement(sql)){
             	ps.setLong(1, entity.getId());
@@ -52,7 +52,7 @@ public class SoldierDao extends AbstractMySqlDao implements ISoldierDao {
 	@Override
 	public Soldier update(Soldier entity) {
 
-        try(Connection con = ConnectionPool.getConnection()) {
+        try(Connection con = getConnection()) {
             String sql = "UPDATE Army.soldiers SET first_name = ?, last_name = ? WHERE id = ?";
             try (PreparedStatement ps = con.prepareStatement(sql)){
             	ps.setString(1, entity.getFirstName());
@@ -71,7 +71,7 @@ public class SoldierDao extends AbstractMySqlDao implements ISoldierDao {
 
 	@Override
 	public void removeById(long id) {
-        try(Connection con = ConnectionPool.getConnection()) {
+        try(Connection con = getConnection()) {
             String sql = "DELETE FROM Army.soldiers WHERE id = ?";
             try (PreparedStatement ps = con.prepareStatement(sql)){
             ps.setLong(1, id);

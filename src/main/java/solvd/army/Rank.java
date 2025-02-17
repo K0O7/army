@@ -1,15 +1,50 @@
 package solvd.army;
 
 public class Rank {
-    private int id;
-    private String rankName;
+    private long id;
+    private String rank_name;
     private Soldier soldier;
+    private long soldier_id;
 
-    public Rank(int id, String rankName, Soldier soldier) {
+    public Rank(int id, String rank_name, Soldier soldier) {
         this.id = id;
-        this.rankName = rankName;
+        this.rank_name = rank_name;
         this.soldier = soldier;
     }
+    
+    public Rank() {
+    }
 
-    // Getters and Setters
+    public long getId() {
+		return id;
+	}
+
+    public void setId(long id) {
+		this.id = id;
+	}
+
+    public String getRankName() {
+		return rank_name;
+	}
+
+    public void setRankName(String rankName) {
+		this.rank_name = rankName;
+	}
+
+    public Soldier getSoldier() {
+		return soldier;
+	}
+
+    public void setSoldier(Soldier soldier) {
+		this.soldier = soldier;
+	}
+	
+    public long getSoldierId() {
+		return soldier_id;
+	}
+
+    public void setSoldierId(long soldier_id) {
+		this.soldier_id = soldier_id;
+	}
+
 }

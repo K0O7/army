@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Allergies>
+    <Allergy>
+        <id>1</id>
+        <medical_record_id>201</medical_record_id>
+        <allergen>Pollen</allergen>
+    </Allergy>
+    <Allergy>
+        <id>2</id>
+        <medical_record_id>202</medical_record_id>
+        <allergen>Peanuts</allergen>
+    </Allergy>
+</Allergies>

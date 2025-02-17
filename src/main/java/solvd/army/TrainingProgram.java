@@ -1,13 +1,31 @@
 package solvd.army;
 
 public class TrainingProgram {
-    private int id;
-    private String programName;
+    private long id;
+    private String program_name;
 
-    public TrainingProgram(int id, String programName) {
+    public TrainingProgram(long id, String programName) {
         this.id = id;
-        this.programName = programName;
+        this.program_name = programName;
+    }
+    
+    public TrainingProgram() {
     }
 
-    // Getters and Setters
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getProgramName() {
+		return program_name;
+	}
+
+	public void setProgramName(String program_name) {
+		this.program_name = program_name;
+	}
+    
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ranks>
+	<Rank>
+    	<id>1</id>
+        <rank_name>Sergeant</rank_name>
+        <soldier_id>101</soldier_id>
+    </Rank>
+    <Rank>
+    	<id>2</id>
+        <rank_name>Lieutenant</rank_name>
+        <soldier_id>102</soldier_id>
+    </Rank>
+</Ranks>

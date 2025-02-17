@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TrainingPrograms>
+    <TrainingProgram>
+        <id>301</id>
+        <program_name>Combat Tactics</program_name>
+    </TrainingProgram>
+    <TrainingProgram>
+        <id>302</id>
+        <program_name>Medical Aid</program_name>
+    </TrainingProgram>
+</TrainingPrograms>

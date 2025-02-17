@@ -3,69 +3,92 @@ package solvd;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ConnectionPool {
-    private static final int MAX_POOL_SIZE = 5;  // Maximum number of connections
-    private static final String URL = "jdbc:mysql://127.0.0.1:3307/Army";
-    private static final String USER = "root";  // Change this to your database user
-    private static final String PASSWORD = "qwerty12345"; // Change this to your database password
+    private static final int MAX_POOL_SIZE = 5;
+    private static final Map<String, String> DRIVER_MAP = new HashMap<>();
     
-    private static List<Connection> availableConnections = new ArrayList<>();
-    private static List<Connection> usedConnections = new ArrayList<>();
+    static {
+        DRIVER_MAP.put("mysql", "com.mysql.cj.jdbc.Driver");
+        DRIVER_MAP.put("oracle", "oracle.jdbc.OracleDriver");
+    }
 
+    private static final Map<String, List<Connection>> availableConnections = new HashMap<>();
+    private static final Map<String, List<Connection>> usedConnections = new HashMap<>();
+    
+    private static String dbType = "mysql";
+    private static String url = "jdbc:mysql://127.0.0.1:3307/Army";
+    private static String user = "root";
+    private static String password = "qwerty12345";
+
+    // Initialize the pool
     static {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver"); // Load MySQL driver
-            for (int i = 0; i < MAX_POOL_SIZE; i++) {
-                availableConnections.add(createConnection());
-            }
-        } catch (ClassNotFoundException | SQLException e) {
+            configureDatabase(dbType, url, user, password);
+        } catch (Exception e) {
             throw new RuntimeException("Error initializing connection pool", e);
         }
     }
 
-    private static Connection createConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
-    }
-    
-    // Get a connection from the pool
-    public static synchronized Connection getConnection() throws SQLException {
-        if (availableConnections.isEmpty()) {
-            throw new SQLException("No available connections in the pool");
+    public static synchronized void configureDatabase(String databaseType, String dbUrl, String dbUser, String dbPassword) throws ClassNotFoundException, SQLException {
+        if (!DRIVER_MAP.containsKey(databaseType)) {
+            throw new IllegalArgumentException("Unsupported database type: " + databaseType);
         }
-        Connection conn = availableConnections.remove(availableConnections.size() - 1);
-        usedConnections.add(conn);
+
+        Class.forName(DRIVER_MAP.get(databaseType)); // Load database driver
+
+        dbType = databaseType;
+        url = dbUrl;
+        user = dbUser;
+        password = dbPassword;
+
+        availableConnections.put(dbType, new ArrayList<>());
+        usedConnections.put(dbType, new ArrayList<>());
+
+        for (int i = 0; i < MAX_POOL_SIZE; i++) {
+            availableConnections.get(dbType).add(createConnection());
+        }
+    }
+
+    private static Connection createConnection() throws SQLException {
+        return DriverManager.getConnection(url, user, password);
+    }
+
+    public static synchronized Connection getConnection() throws SQLException {
+        List<Connection> pool = availableConnections.get(dbType);
+        if (pool == null || pool.isEmpty()) {
+            throw new SQLException("No available connections in the pool for " + dbType);
+        }
+        Connection conn = pool.remove(pool.size() - 1);
+        usedConnections.get(dbType).add(conn);
         return conn;
     }
 
-    // Release a connection back to the pool
     public static synchronized void releaseConnection(Connection conn) {
         if (conn != null) {
-            usedConnections.remove(conn);
-            availableConnections.add(conn);
+            usedConnections.get(dbType).remove(conn);
+            availableConnections.get(dbType).add(conn);
         }
     }
 
-    // Close all connections when the application stops
     public static synchronized void shutdown() {
-        for (Connection conn : availableConnections) {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        for (Connection conn : usedConnections) {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+        closeConnections(availableConnections.get(dbType));
+        closeConnections(usedConnections.get(dbType));
         availableConnections.clear();
         usedConnections.clear();
     }
-}
 
+    private static void closeConnections(List<Connection> connections) {
+        if (connections != null) {
+            for (Connection conn : connections) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            connections.clear();
+        }
+    }
+}

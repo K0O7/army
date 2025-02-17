@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Soldiers>
-    <Soldier id="1">
+    <Soldier id="101">
         <first_name>John</first_name>
         <last_name>Doe</last_name>
     </Soldier>
-    <Soldier id="2">
+    <Soldier id="102">
         <first_name>Mike</first_name>
         <last_name>Smith</last_name>
     </Soldier>
