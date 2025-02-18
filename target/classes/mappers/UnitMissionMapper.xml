@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="daos.myBatis.UnitMissionDao">
+
+    <resultMap id="UnitMissionResultMap" type="solvd.army.UnitMission">
+        <id property="id" column="id"/>
+        <association property="mission" javaType="solvd.army.Mission" 
+                     select="solvd.army.mybatis.dao.MissionDao.getMissionById" column="mission_id"/>
+    </resultMap>
+
+    <select id="getById" parameterType="int" resultMap="UnitMissionResultMap">
+        SELECT * FROM Army.unit_missions WHERE id = #{id}
+    </select>
+
+    <insert id="save" parameterType="solvd.army.UnitMission" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO Army.unit_missions (mission_id, unit_id) VALUES (#{mission.id}, #{unit.id})
+    </insert>
+
+    <update id="update" parameterType="solvd.army.UnitMission">
+        UPDATE Army.unit_missions SET mission_id = #{mission.id}, unit_id = #{unit.id} WHERE id = #{id}
+    </update>
+
+    <delete id="removeById" parameterType="int">
+        DELETE FROM Army.unit_missions WHERE id = #{id}
+    </delete>
+
+</mapper>

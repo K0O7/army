@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="daos.myBatis.MissionDao">
+
+    <resultMap id="MissionResultMap" type="solvd.army.Mission">
+        <id property="id" column="id"/>
+        <result property="missionName" column="mission_name"/>
+        <result property="missionDate" column="mission_date" jdbcType="DATE"/>
+        <result property="location" column="location"/>
+    </resultMap>
+
+    <select id="getById" parameterType="int" resultMap="MissionResultMap">
+        SELECT * FROM Army.missions WHERE id = #{id}
+    </select>
+
+    <insert id="save" parameterType="solvd.army.Mission" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO Army.missions (mission_name, mission_date, location) 
+        VALUES (#{missionName}, #{missionDate}, #{location})
+    </insert>
+
+    <update id="update" parameterType="solvd.army.Mission">
+        UPDATE Army.missions SET mission_name = #{missionName}, mission_date = #{missionDate}, location = #{location} WHERE id = #{id}
+    </update>
+
+    <delete id="removeById" parameterType="int">
+        DELETE FROM Army.missions WHERE id = #{id}
+    </delete>
+
+</mapper>
+

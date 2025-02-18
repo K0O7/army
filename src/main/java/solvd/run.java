@@ -13,19 +13,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import daos.mySqlImp.SoldierDao;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
 import solvd.army.*;
+import daos.myBatis.*;
 
 public class run {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		//can change databeses using ex. ConnectionPool.configureDatabase("oracle", "jdbc:oracle:thin:@localhost:1521:orcl", "oracleUser", "oraclePassword");
-		//rest of this code stays the same doesnt matter which database, just neet to include it in connectionPool class
-		
+		//rest of this code stays the same doesnt matter which database, just neet to include it in connectionPool class		
         SoldierDao soldierDao = new SoldierDao();
 
         // Insert a new soldier
@@ -85,9 +86,30 @@ public class run {
         unitMission.setMission(mission);
         unitMission.setUnit(unit);
         
-        JsonParser.writeJson("mission.json", mission);
-        JsonParser.writeJson("unitMission.json", unitMission);
+        //JsonParser.writeJson("mission.json", mission);
+        //JsonParser.writeJson("unitMission.json", unitMission);
         //JsonParser.writeJson("unit.json", unit);
+        
+        IUnitDao unitDao = new UnitDao();
+
+        // Fetch unit by ID
+        Unit unit2 = unitDao.getById(1);
+        System.out.println("Unit Name: " + unit.getUnitName());
+
+        // Insert new unit
+        Unit newUnit = new Unit();
+        newUnit.setUnitName("Elite Squad");
+        unitDao.save(newUnit);
+        System.out.println("Inserted Unit ID: " + newUnit.getId());
+
+        // Update unit
+        newUnit.setUnitName("Updated Squad");
+        unitDao.update(newUnit);
+        System.out.println("Updated Unit Name: " + newUnit.getUnitName());
+
+        // Remove unit
+        unitDao.removeById(newUnit.getId());
+        System.out.println("Unit deleted.");
 
 	}
 	
@@ -143,28 +165,14 @@ public class run {
 
 
 /*
-
 uwagi
-jak robienie adnotacji do JAXD, Jackson, itd robi kopie klasy z innymi adnotacjami
+jak robienie adnotacji do JAXB, Jackson, itd robi kopie klasy z innymi adnotacjami
 
 pytania
 czy taki wrapper jest dobry(abstractMySqlDao)?
 jak najlepiej łączyc klasy stworzone w osobnych dao?, jako metoda osobnej klasy? czy w jednym z dao przez przekazanie odpowiednich info? czy SoldierDao powinien wywolywac metody do znalezienia odpowiednich danych z innych dao?
 
 todo
-Validate XML file using XSD schema and assigned parser. done
-Parse XML file using one of the parsers from the title. used DOM
-
-Add JAXB annotations to the hierarchy. Date, List, and complex objects should be covered. done
-Parse XML using JAXB. done
-
-Create one Json file for at least 5 classes from the hierarchy. done
-Add Jackson’s annotation to the hierarchy. Date, List, and complex objects should be covered. done
-Parse JSON using Jackson. done
-
-Add MyBatis DAOs to the existing hierarchy with the same requirements. Choose any XML or interface mapping.
-Switch service classes to MyBatis.
-
 Add Factory, Abstract Factory, Builder, Listener, Facade, Decorator, Proxy, Strategy, MVC patterns to your current project.
 Refactor code for the current project to satisfy SOLID principles.
 */
