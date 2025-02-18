@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Soldier id="1">
+    <first_name>John</first_name>
+    <last_name>Doe</last_name>
+    <rank id="1">
+        <rank_name>Sergeant</rank_name>
+    </rank>
+    <trainings>
+	    <training id = "101">
+	    	<start_date>2023-02-18</start_date>
+	    	<end_date>2023-03-18</end_date>
+	    	<trainingProgram id = "201">
+	    		<program_name>Infiltration training</program_name>
+	    	</trainingProgram>
+		</training>
+			<training id = "102">
+	    	<start_date>2023-03-19</start_date>
+	    	<end_date>2023-04-18</end_date>
+	    	<trainingProgram id = "202">
+	    		<program_name>Tactical combat</program_name>
+	    	</trainingProgram>
+		</training>
+	</trainings>
+</Soldier>

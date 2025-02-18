@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SoldierTraining id = "101">
+    <start_date>2023-02-18</start_date>
+    <end_date>2023-03-18</end_date>
+    <trainingProgram id = "201">
+    	<program_name>Infiltration training</program_name>
+    </trainingProgram>
+</SoldierTraining>

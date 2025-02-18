@@ -11,9 +11,14 @@ import javax.xml.validation.Validator;
 import org.xml.sax.SAXException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import daos.mySqlImp.SoldierDao;
-import solvd.army.Soldier;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
+import solvd.army.*;
 
 public class run {
 
@@ -54,6 +59,35 @@ public class run {
         ArmyDataDOMParser.parseAllergies("allergy.xml");
         ArmyDataDOMParser.parseSoldierTrainings("soldierTraining.xml");
         ArmyDataDOMParser.parseTrainingPrograms("trainingProgram.xml");
+        
+        xmlFile = "soldierJAXA.xml"; // Update the path if needed
+        soldier = parseSoldierXML(xmlFile);
+
+        if (soldier != null) {
+            System.out.println("Parsed Soldier: " + soldier.getFirstName() + " " + soldier.getRank().getRankName() + " " + soldier.getTrainings().get(0).getTrainingProgram().getProgramName() + ", " + soldier.getTrainings().get(1).getTrainingProgram().getProgramName());
+        } else {
+            System.out.println("Failed to parse XML.");
+        }
+        
+        UnitMissionJson unitMission = new UnitMissionJson();
+        UnitJson unit = new UnitJson();
+        MissionJson mission = new MissionJson();
+        unit.setId(101);
+        unit.setUnitName("infantry");
+        List<UnitMissionJson> missions = new ArrayList<UnitMissionJson>();
+        missions.add(unitMission);
+        unit.setUnitMissions(missions);
+        mission.setId(201);
+        mission.setLocation("Poland");
+        mission.setMissionDate(null);
+        mission.setMissionName("exercise");
+        unitMission.setId(301);
+        unitMission.setMission(mission);
+        unitMission.setUnit(unit);
+        
+        JsonParser.writeJson("mission.json", mission);
+        JsonParser.writeJson("unitMission.json", unitMission);
+        //JsonParser.writeJson("unit.json", unit);
 
 	}
 	
@@ -86,8 +120,25 @@ public class run {
 	    }
 	}
 
+    public static Soldier parseSoldierXML(String fileName) {
+        try {
+            JAXBContext context = JAXBContext.newInstance(Soldier.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
 
+            // Load the file as a resource
+            ClassLoader classLoader = run.class.getClassLoader();
+            InputStream inputStream = classLoader.getResourceAsStream(fileName);
 
+            if (inputStream == null) {
+                throw new IllegalArgumentException("File not found: " + fileName);
+            }
+
+            return (Soldier) unmarshaller.unmarshal(inputStream);
+        } catch (JAXBException | IllegalArgumentException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
 
 
@@ -103,4 +154,17 @@ jak najlepiej łączyc klasy stworzone w osobnych dao?, jako metoda osobnej klas
 todo
 Validate XML file using XSD schema and assigned parser. done
 Parse XML file using one of the parsers from the title. used DOM
+
+Add JAXB annotations to the hierarchy. Date, List, and complex objects should be covered. done
+Parse XML using JAXB. done
+
+Create one Json file for at least 5 classes from the hierarchy. done
+Add Jackson’s annotation to the hierarchy. Date, List, and complex objects should be covered. done
+Parse JSON using Jackson. done
+
+Add MyBatis DAOs to the existing hierarchy with the same requirements. Choose any XML or interface mapping.
+Switch service classes to MyBatis.
+
+Add Factory, Abstract Factory, Builder, Listener, Facade, Decorator, Proxy, Strategy, MVC patterns to your current project.
+Refactor code for the current project to satisfy SOLID principles.
 */

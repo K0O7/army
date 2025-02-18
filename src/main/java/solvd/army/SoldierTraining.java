@@ -1,14 +1,26 @@
 package solvd.army;
+import solvd.*;
 import java.time.LocalDate;
-import java.util.Date;
+import jakarta.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+@XmlRootElement(name = "SoldierTraining")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SoldierTraining {
+	@XmlAttribute
     private long id;
+	@XmlTransient
     private Soldier soldier;
+	@XmlTransient
     private long soldiers_id;
+    @XmlElement
     private TrainingProgram trainingProgram;
     private long training_programs_id;
+    @XmlElement(name = "start_date")
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate startDate;
+    @XmlElement(name = "end_date")
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate endDate;
 
     public SoldierTraining(long id, Soldier soldier, TrainingProgram trainingProgram, LocalDate startDate, LocalDate endDate) {

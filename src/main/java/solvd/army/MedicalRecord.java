@@ -1,12 +1,23 @@
 package solvd.army;
 import java.util.List;
 
+import jakarta.xml.bind.annotation.*;
+
+@XmlRootElement(name = "MedicalRecord")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class MedicalRecord {
+	@XmlAttribute
     private long id;
+	@XmlElement
     private String blood_type;
+	@XmlElement
     private String rh;
+	@XmlElement
     private Soldier soldier;
+	@XmlElementWrapper(name = "allergies")
+	@XmlElement(name = "allergy")
     private List<Allergy> allergies;
+	@XmlTransient
     private long soldier_id;
 
     public MedicalRecord(int id, String bloodType, String rhFactor, Soldier soldier) {

@@ -1,7 +1,13 @@
 package solvd.army;
 
+import jakarta.xml.bind.annotation.*;
+
+@XmlRootElement(name = "TrainingProgram")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class TrainingProgram {
+	@XmlAttribute
     private long id;
+	@XmlElement
     private String program_name;
 
     public TrainingProgram(long id, String programName) {
@@ -9,8 +15,7 @@ public class TrainingProgram {
         this.program_name = programName;
     }
     
-    public TrainingProgram() {
-    }
+    public TrainingProgram() {}
 
 	public long getId() {
 		return id;

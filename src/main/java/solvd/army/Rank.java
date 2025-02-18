@@ -1,9 +1,17 @@
 package solvd.army;
 
+import jakarta.xml.bind.annotation.*;
+
+@XmlRootElement(name = "Rank")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Rank {
+	@XmlAttribute
     private long id;
+	@XmlElement
     private String rank_name;
+	@XmlTransient
     private Soldier soldier;
+	@XmlTransient
     private long soldier_id;
 
     public Rank(int id, String rank_name, Soldier soldier) {
@@ -12,8 +20,7 @@ public class Rank {
         this.soldier = soldier;
     }
     
-    public Rank() {
-    }
+    public Rank() {}
 
     public long getId() {
 		return id;

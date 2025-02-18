@@ -1,9 +1,17 @@
 package solvd.army;
 
+import jakarta.xml.bind.annotation.*;
+
+@XmlRootElement(name = "Allergy")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Allergy {
+	@XmlAttribute
     private long id;
+	@XmlElement
     private String allergen;
+	@XmlElement
     private MedicalRecord medicalRecord;
+	@XmlTransient
     private long medical_record_id;
 
     public Allergy(long id, String allergen, MedicalRecord medicalRecord) {

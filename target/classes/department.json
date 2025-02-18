@@ -1,0 +1,22 @@
+{
+  "id" : 501,
+  "department_name" : "defence",
+  "division" : {
+	"id" : 401,
+  	"division_name" : "101 mixed infantry",
+  	"unit" : {
+		"id" : 101,
+  		"unit_name" : "infantry",
+  		"unit_missions" : [{
+    		"id" : 301,
+    		"mission" : {
+      			"id" : 201,
+      			"mission_name" : "exercise",
+      			"mission_date" : null,
+      			"location" : "Poland"
+    		}	
+  		}]
+  	}
+  }
+
+}
