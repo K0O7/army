@@ -8,8 +8,11 @@ import java.sql.SQLException;
 import daos.IAllergyDao;
 import solvd.army.Allergy;
 
-public class AllergyDao extends AbstractMySqlDao implements IAllergyDao {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+public class AllergyDao extends AbstractMySqlDao implements IAllergyDao {
+	private static final Logger logger = LogManager.getLogger(AllergyDao.class);
     @Override
     public Allergy getById(long id) {
         try (Connection con = getConnection()) {
@@ -27,7 +30,7 @@ public class AllergyDao extends AbstractMySqlDao implements IAllergyDao {
                 }
             }
         } catch (SQLException e) {
-            // logger.severe("Error retrieving allergy by ID: " + e.getMessage());
+        	logger.error("Error retrieving allergy by ID: " + e.getMessage());
         }
         return null;
     }
@@ -46,7 +49,7 @@ public class AllergyDao extends AbstractMySqlDao implements IAllergyDao {
                 }
             }
         } catch (SQLException e) {
-            // logger.severe("Error saving allergy: " + e.getMessage());
+             logger.error("Error saving allergy: " + e.getMessage());
         }
         return null;
     }
@@ -66,7 +69,7 @@ public class AllergyDao extends AbstractMySqlDao implements IAllergyDao {
                 }
             }
         } catch (SQLException e) {
-            // logger.severe("Error updating allergy: " + e.getMessage());
+             logger.error("Error updating allergy: " + e.getMessage());
         }
         return null;
     }
@@ -80,7 +83,7 @@ public class AllergyDao extends AbstractMySqlDao implements IAllergyDao {
                 ps.executeUpdate();
             }
         } catch (SQLException e) {
-            // logger.severe("Error deleting allergy: " + e.getMessage());
+             logger.error("Error deleting allergy: " + e.getMessage());
         }
     }
 }

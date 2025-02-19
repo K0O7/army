@@ -8,8 +8,11 @@ import java.sql.SQLException;
 import daos.IRankDao;
 import solvd.army.Rank;
 
-public class RankDao extends AbstractMySqlDao implements IRankDao {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+public class RankDao extends AbstractMySqlDao implements IRankDao {
+	private static final Logger logger = LogManager.getLogger(RankDao.class);
     @Override
     public Rank getById(long id) {
         try (Connection con = getConnection()) {
@@ -17,17 +20,17 @@ public class RankDao extends AbstractMySqlDao implements IRankDao {
             try (PreparedStatement ps = con.prepareStatement(sql)) {
                 ps.setLong(1, id);
                 try (ResultSet rs = ps.executeQuery()) {
-                    Rank r = new Rank(); // Using empty constructor
+                    Rank r = new Rank();
                     while (rs.next()) {
                         r.setId(rs.getLong("id"));
                         r.setRankName(rs.getString("rank_name"));
-                        r.setSoldierId(rs.getLong("soldier_id")); // Only setting soldier_id, not Soldier object
+                        r.setSoldierId(rs.getLong("soldier_id"));
                     }
                     return r;
                 }
             }
         } catch (SQLException e) {
-            // logger.severe("Error selecting rank by id: " + e.getMessage());
+             logger.error("Error selecting rank by id: " + e.getMessage());
         }
         return null;
     }
@@ -46,7 +49,7 @@ public class RankDao extends AbstractMySqlDao implements IRankDao {
                 }
             }
         } catch (SQLException e) {
-            // logger.severe("Error saving rank: " + e.getMessage());
+             logger.error("Error saving rank: " + e.getMessage());
         }
         return null;
     }
@@ -65,7 +68,7 @@ public class RankDao extends AbstractMySqlDao implements IRankDao {
                 }
             }
         } catch (SQLException e) {
-            // logger.severe("Error updating rank: " + e.getMessage());
+             logger.error("Error updating rank: " + e.getMessage());
         }
         return null;
     }
@@ -79,7 +82,7 @@ public class RankDao extends AbstractMySqlDao implements IRankDao {
                 ps.executeUpdate();
             }
         } catch (SQLException e) {
-            // logger.severe("Error deleting rank: " + e.getMessage());
+             logger.error("Error deleting rank: " + e.getMessage());
         }
     }
 }

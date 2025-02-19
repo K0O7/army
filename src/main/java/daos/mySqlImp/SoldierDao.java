@@ -5,11 +5,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import daos.ISoldierDao;
-import solvd.ConnectionPool;
 import solvd.army.Soldier;
 
-public class SoldierDao extends AbstractMySqlDao implements ISoldierDao {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+public class SoldierDao extends AbstractMySqlDao implements ISoldierDao {
+	private static final Logger logger = LogManager.getLogger(SoldierDao.class);
+	
 	@Override
 	public Soldier getById(long id) {
 		try(Connection con = getConnection()) {
@@ -26,7 +29,7 @@ public class SoldierDao extends AbstractMySqlDao implements ISoldierDao {
 
 					return s;
 		}}} catch(SQLException  e) {
-			//logger.severe("Error selecting soldier by id: " + e.getMessage());
+			logger.error("Error selecting soldier by id: " + e.getMessage());
 		}
 		return null;
 	}
@@ -44,7 +47,7 @@ public class SoldierDao extends AbstractMySqlDao implements ISoldierDao {
             		return entity;
             }
         }} catch (SQLException e) {
-        	//logger.severe("Error saving soldier: " + e.getMessage());
+        	logger.error("Error saving soldier: " + e.getMessage());
         }
         return null;
 	}
@@ -64,7 +67,7 @@ public class SoldierDao extends AbstractMySqlDao implements ISoldierDao {
             		return entity;
             }
         }} catch (SQLException e) {
-        	//logger.severe("Error updating soldier: " + e.getMessage());
+        	logger.error("Error updating soldier: " + e.getMessage());
         }
         return null;
 	}
@@ -77,7 +80,7 @@ public class SoldierDao extends AbstractMySqlDao implements ISoldierDao {
             ps.setLong(1, id);
             ps.executeUpdate();
         }} catch (SQLException e) {
-        	//logger.severe("Error deleting soldier: " + e.getMessage());
+        	logger.error("Error deleting soldier: " + e.getMessage());
         }
 	}
 

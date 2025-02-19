@@ -8,7 +8,7 @@ import jakarta.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Unit {
 	@XmlAttribute
-    private int id;
+    private long id;
 	@XmlElement
     private String unit_name;
 	@XmlElementWrapper(name = "unitMissions")
@@ -17,16 +17,16 @@ public class Unit {
     
     public Unit() {}
 
-    public Unit(int id, String unitName) {
+    public Unit(long id, String unitName) {
         this.id = id;
         this.unit_name = unitName;
     }
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

@@ -8,8 +8,11 @@ import java.sql.SQLException;
 import daos.IMedicalRecordDao;
 import solvd.army.MedicalRecord;
 
-public class MedicalRecordDao extends AbstractMySqlDao implements IMedicalRecordDao {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+public class MedicalRecordDao extends AbstractMySqlDao implements IMedicalRecordDao {
+    private static final Logger logger = LogManager.getLogger(MedicalRecordDao.class);
     @Override
     public MedicalRecord getById(long id) {
         try (Connection con = getConnection()) {
@@ -28,7 +31,7 @@ public class MedicalRecordDao extends AbstractMySqlDao implements IMedicalRecord
                 }
             }
         } catch (SQLException e) {
-            // logger.severe("Error retrieving medical record by ID: " + e.getMessage());
+             logger.error("Error retrieving medical record by ID: " + e.getMessage());
         }
         return null;
     }
@@ -48,7 +51,7 @@ public class MedicalRecordDao extends AbstractMySqlDao implements IMedicalRecord
                 }
             }
         } catch (SQLException e) {
-            // logger.severe("Error saving medical record: " + e.getMessage());
+             logger.error("Error saving medical record: " + e.getMessage());
         }
         return null;
     }
@@ -69,7 +72,7 @@ public class MedicalRecordDao extends AbstractMySqlDao implements IMedicalRecord
                 }
             }
         } catch (SQLException e) {
-            // logger.severe("Error updating medical record: " + e.getMessage());
+             logger.error("Error updating medical record: " + e.getMessage());
         }
         return null;
     }
@@ -83,7 +86,7 @@ public class MedicalRecordDao extends AbstractMySqlDao implements IMedicalRecord
                 ps.executeUpdate();
             }
         } catch (SQLException e) {
-            // logger.severe("Error deleting medical record: " + e.getMessage());
+             logger.error("Error deleting medical record: " + e.getMessage());
         }
     }
 }

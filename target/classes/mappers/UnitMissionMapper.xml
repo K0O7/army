@@ -13,17 +13,25 @@
     <select id="getById" parameterType="int" resultMap="UnitMissionResultMap">
         SELECT * FROM Army.unit_missions WHERE id = #{id}
     </select>
+    
+    <select id="getMissionsByUnitId" parameterType="int" resultMap="UnitMissionResultMap">
+        SELECT * FROM Army.unit_missions WHERE units_id = #{unitId}
+    </select>
 
     <insert id="save" parameterType="solvd.army.UnitMission" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO Army.unit_missions (mission_id, unit_id) VALUES (#{mission.id}, #{unit.id})
+        INSERT INTO Army.unit_missions (missions_id, units_id) VALUES (#{mission.id}, #{unit.id})
     </insert>
 
     <update id="update" parameterType="solvd.army.UnitMission">
-        UPDATE Army.unit_missions SET mission_id = #{mission.id}, unit_id = #{unit.id} WHERE id = #{id}
+        UPDATE Army.unit_missions SET missions_id = #{mission.id}, units_id = #{unit.id} WHERE id = #{id}
     </update>
 
     <delete id="removeById" parameterType="int">
         DELETE FROM Army.unit_missions WHERE id = #{id}
+    </delete>
+    
+    <delete id="deleteByUnitId" parameterType="int">
+        DELETE FROM Army.unit_missions WHERE units_id = #{unitId}
     </delete>
 
 </mapper>

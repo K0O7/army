@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class ConnectionPool {
-    private static final int MAX_POOL_SIZE = 5;
+    private static final int MAX_POOL_SIZE = 10;
     private static final Map<String, String> DRIVER_MAP = new HashMap<>();
     
     static {
@@ -22,7 +22,6 @@ public class ConnectionPool {
     private static String user = "root";
     private static String password = "qwerty12345";
 
-    // Initialize the pool
     static {
         try {
             configureDatabase(dbType, url, user, password);
@@ -36,7 +35,7 @@ public class ConnectionPool {
             throw new IllegalArgumentException("Unsupported database type: " + databaseType);
         }
 
-        Class.forName(DRIVER_MAP.get(databaseType)); // Load database driver
+        Class.forName(DRIVER_MAP.get(databaseType));
 
         dbType = databaseType;
         url = dbUrl;

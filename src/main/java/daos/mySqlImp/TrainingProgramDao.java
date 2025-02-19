@@ -8,8 +8,12 @@ import java.sql.SQLException;
 import daos.ITrainingProgramDao;
 import solvd.army.TrainingProgram;
 
-public class TrainingProgramDao extends AbstractMySqlDao implements ITrainingProgramDao {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+public class TrainingProgramDao extends AbstractMySqlDao implements ITrainingProgramDao {
+	private static final Logger logger = LogManager.getLogger(TrainingProgramDao.class);
+	
     @Override
     public TrainingProgram getById(long id) {
         try (Connection con = getConnection()) {
@@ -26,7 +30,7 @@ public class TrainingProgramDao extends AbstractMySqlDao implements ITrainingPro
                 }
             }
         } catch (SQLException e) {
-            // logger.severe("Error retrieving training program by ID: " + e.getMessage());
+             logger.error("Error retrieving training program by ID: " + e.getMessage());
         }
         return null;
     }
@@ -44,7 +48,7 @@ public class TrainingProgramDao extends AbstractMySqlDao implements ITrainingPro
                 }
             }
         } catch (SQLException e) {
-            // logger.severe("Error saving training program: " + e.getMessage());
+             logger.error("Error saving training program: " + e.getMessage());
         }
         return null;
     }
@@ -63,7 +67,7 @@ public class TrainingProgramDao extends AbstractMySqlDao implements ITrainingPro
                 }
             }
         } catch (SQLException e) {
-            // logger.severe("Error updating training program: " + e.getMessage());
+             logger.error("Error updating training program: " + e.getMessage());
         }
         return null;
     }
@@ -77,7 +81,7 @@ public class TrainingProgramDao extends AbstractMySqlDao implements ITrainingPro
                 ps.executeUpdate();
             }
         } catch (SQLException e) {
-            // logger.severe("Error deleting training program: " + e.getMessage());
+             logger.error("Error deleting training program: " + e.getMessage());
         }
     }
 }

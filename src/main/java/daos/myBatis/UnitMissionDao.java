@@ -1,5 +1,7 @@
 package daos.myBatis;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import solvd.MyBatisUtil;
@@ -37,4 +39,22 @@ public class UnitMissionDao implements IUnitMissionDao {
             mapper.removeById(id);
         }
     }
+
+	@Override
+	public List<UnitMission> getMissionsByUnitId(long unitId) {
+        try (SqlSession session = MyBatisUtil.getSessionFactory().openSession()) {
+        	IUnitMissionDao mapper = session.getMapper(IUnitMissionDao.class);
+        	return mapper.getMissionsByUnitId(unitId);
+            //return session.selectList("daos.myBatis.IUnitMissionDao.getMissionsByUnitId", unitId);
+        }
+	}
+
+	@Override
+	public void deleteByUnitId(long unitId) {
+        try (SqlSession session = MyBatisUtil.getSessionFactory().openSession(true)) {
+        	IUnitMissionDao mapper = session.getMapper(IUnitMissionDao.class);
+            mapper.deleteByUnitId(unitId);
+            //session.delete("daos.myBatis.IUnitMissionDao.deleteByUnitId", unitId);
+        }
+	}
 }
