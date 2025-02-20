@@ -135,7 +135,6 @@ public class run {
         IUnitDao unitDao = new UnitDao();
 
         // Fetch unit by ID
-        Unit unit2 = unitDao.getById(1);
         logger.info("Unit Name: " + unit.getUnitName());
 
         // Insert new unit
@@ -336,15 +335,5 @@ czy taki wrapper jest dobry(abstractMySqlDao)?
 jak najlepiej łączyc klasy stworzone w osobnych dao?, jako metoda osobnej klasy? czy w jednym z dao przez przekazanie odpowiednich info? czy SoldierDao powinien wywolywac metody do znalezienia odpowiednich danych z innych dao?
 
 todo
-Add Factory, -
-Abstract Factory, -
-Builder, -
-Listener, 
-Facade, 
-Decorator, 
-Proxy, 
-Strategy, 
-MVC 
-patterns to your current project.
 Refactor code for the current project to satisfy SOLID principles.
 */
