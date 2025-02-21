@@ -18,9 +18,9 @@ public class ConnectionPool {
     private static final Map<String, List<Connection>> usedConnections = new HashMap<>();
     
     private static String dbType = "mysql";
-    private static String url = "jdbc:mysql://127.0.0.1:3307/Army";
+    private static String url = "jdbc:mysql://34.205.43.78:3306/Army";
     private static String user = "root";
-    private static String password = "qwerty12345";
+    private static String password = "";
 
     static {
         try {

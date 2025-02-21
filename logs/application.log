@@ -242,3 +242,159 @@
 [2025-02-19 23:50:04] INFO  UnitView:10 - ID: 1
 [2025-02-19 23:50:04] INFO  UnitView:11 - Name: Bravo Squad
 [2025-02-19 23:50:04] INFO  UnitView:12 - ====================
+[2025-02-21 17:44:26] INFO  run:74 - Retrieved: John Doe
+[2025-02-21 17:44:27] INFO  run:90 - ✅ XML is valid.
+
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:13 - Soldiers:
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:20 -   ID: 101
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:21 -   First Name: John
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:22 -   Last Name: Doe
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:20 -   ID: 102
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:21 -   First Name: Mike
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:22 -   Last Name: Smith
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:27 - Ranks:
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:34 -   ID: 1
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:35 -   Rank Name: Sergeant
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:36 -   Soldier ID: 101
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:34 -   ID: 2
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:35 -   Rank Name: Lieutenant
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:36 -   Soldier ID: 102
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:41 - Allergies:
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:48 -   ID: 1
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:49 -   Medical Record ID: 201
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:50 -   Allergen: Pollen
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:48 -   ID: 2
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:49 -   Medical Record ID: 202
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:50 -   Allergen: Peanuts
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:55 - Soldier Trainings:
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:62 -   ID: 1
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:63 -   Soldier ID: 101
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:64 -   Training Program ID: 301
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:65 -   Start Date: 2023-01-15
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:66 -   End Date: 2023-06-20
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:62 -   ID: 2
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:63 -   Soldier ID: 102
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:64 -   Training Program ID: 302
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:65 -   Start Date: 2023-02-10
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:66 -   End Date: 2023-08-05
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:71 - Training Programs:
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:78 -   ID: 301
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:79 -   Program Name: Combat Tactics
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:78 -   ID: 302
+[2025-02-21 17:44:27] INFO  ArmyDataDOMParser:79 -   Program Name: Medical Aid
+[2025-02-21 17:44:27] INFO  run:107 - Parsed Soldier: John Sergeant Infiltration training, Tactical combat
+[2025-02-21 17:44:27] INFO  run:138 - Unit Name: infantry
+[2025-02-21 17:44:27] DEBUG LogFactory:112 - Logging initialized using 'class org.apache.ibatis.logging.log4j2.Log4j2Impl' adapter.
+[2025-02-21 17:44:27] DEBUG PooledDataSource:379 - PooledDataSource forcefully closed/removed all connections.
+[2025-02-21 17:44:27] DEBUG PooledDataSource:379 - PooledDataSource forcefully closed/removed all connections.
+[2025-02-21 17:44:27] DEBUG PooledDataSource:379 - PooledDataSource forcefully closed/removed all connections.
+[2025-02-21 17:44:27] DEBUG PooledDataSource:379 - PooledDataSource forcefully closed/removed all connections.
+[2025-02-21 17:44:27] DEBUG JdbcTransaction:143 - Opening JDBC Connection
+[2025-02-21 17:44:28] DEBUG PooledDataSource:454 - Created connection 1904676263.
+[2025-02-21 17:44:28] DEBUG save:135 - ==>  Preparing: INSERT INTO Army.units (unit_name) VALUES (?)
+[2025-02-21 17:44:28] DEBUG save:135 - ==> Parameters: Elite Squad(String)
+[2025-02-21 17:44:28] DEBUG save:135 - <==    Updates: 1
+[2025-02-21 17:44:28] DEBUG JdbcTransaction:97 - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@71870da7]
+[2025-02-21 17:44:28] DEBUG PooledDataSource:409 - Returned connection 1904676263 to pool.
+[2025-02-21 17:44:28] INFO  run:144 - Inserted Unit ID: 1
+[2025-02-21 17:44:28] DEBUG JdbcTransaction:143 - Opening JDBC Connection
+[2025-02-21 17:44:28] DEBUG PooledDataSource:448 - Checked out connection 1904676263 from pool.
+[2025-02-21 17:44:28] DEBUG update:135 - ==>  Preparing: UPDATE Army.units SET unit_name = ? WHERE id = ?
+[2025-02-21 17:44:28] DEBUG update:135 - ==> Parameters: Updated Squad(String), 1(Long)
+[2025-02-21 17:44:28] DEBUG update:135 - <==    Updates: 1
+[2025-02-21 17:44:28] DEBUG JdbcTransaction:97 - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@71870da7]
+[2025-02-21 17:44:28] DEBUG PooledDataSource:409 - Returned connection 1904676263 to pool.
+[2025-02-21 17:44:28] INFO  run:149 - Updated Unit Name: Updated Squad
+[2025-02-21 17:44:28] DEBUG JdbcTransaction:143 - Opening JDBC Connection
+[2025-02-21 17:44:28] DEBUG PooledDataSource:448 - Checked out connection 1904676263 from pool.
+[2025-02-21 17:44:28] DEBUG removeById:135 - ==>  Preparing: DELETE FROM Army.units WHERE id = ?
+[2025-02-21 17:44:28] DEBUG removeById:135 - ==> Parameters: 1(Long)
+[2025-02-21 17:44:29] DEBUG removeById:135 - <==    Updates: 1
+[2025-02-21 17:44:29] DEBUG JdbcTransaction:97 - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@71870da7]
+[2025-02-21 17:44:29] DEBUG PooledDataSource:409 - Returned connection 1904676263 to pool.
+[2025-02-21 17:44:29] INFO  run:153 - Unit deleted.
+[2025-02-21 17:44:29] INFO  InfantryUnit:10 - This is an Infantry Unit.
+[2025-02-21 17:44:29] INFO  AirforceUnit:10 - This is an Airforce Unit.
+[2025-02-21 17:44:29] INFO  InfantryUnit:10 - This is an Infantry Unit.
+[2025-02-21 17:44:29] INFO  InfantryMission:10 - Infantry Mission: Ground attack initiated.
+[2025-02-21 17:44:29] INFO  AirforceUnit:10 - This is an Airforce Unit.
+[2025-02-21 17:44:29] INFO  AirforceMission:10 - Airforce Mission: Aerial strike in progress.
+[2025-02-21 17:44:29] INFO  run:186 - Created Unit: Infantry Division
+[2025-02-21 17:44:29] INFO  run:196 - Updated Squad
+[2025-02-21 17:44:29] INFO  UnitLoggerListener:11 - Unit Created: Infantry Division
+[2025-02-21 17:44:29] INFO  UnitLoggerListener:16 - Unit Updated: Special Forces
+[2025-02-21 17:44:29] INFO  UnitLoggerListener:21 - Unit Deleted with ID: 1
+[2025-02-21 17:44:29] DEBUG JdbcTransaction:143 - Opening JDBC Connection
+[2025-02-21 17:44:29] DEBUG PooledDataSource:448 - Checked out connection 1904676263 from pool.
+[2025-02-21 17:44:29] DEBUG save:135 - ==>  Preparing: INSERT INTO Army.units (unit_name) VALUES (?)
+[2025-02-21 17:44:29] DEBUG save:135 - ==> Parameters: Infantry Division(String)
+[2025-02-21 17:44:29] DEBUG save:135 - <==    Updates: 1
+[2025-02-21 17:44:29] DEBUG JdbcTransaction:97 - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@71870da7]
+[2025-02-21 17:44:29] DEBUG PooledDataSource:409 - Returned connection 1904676263 to pool.
+[2025-02-21 17:44:29] DEBUG JdbcTransaction:143 - Opening JDBC Connection
+[2025-02-21 17:44:29] DEBUG PooledDataSource:448 - Checked out connection 1904676263 from pool.
+[2025-02-21 17:44:29] DEBUG save:135 - ==>  Preparing: INSERT INTO Army.missions (mission_name, mission_date, location) VALUES (?, ?, ?)
+[2025-02-21 17:44:29] DEBUG save:135 - ==> Parameters: Operation Storm(String), 2025-02-21(LocalDate), Desert Base(String)
+[2025-02-21 17:44:29] DEBUG save:135 - <==    Updates: 1
+[2025-02-21 17:44:29] DEBUG JdbcTransaction:97 - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@71870da7]
+[2025-02-21 17:44:29] DEBUG PooledDataSource:409 - Returned connection 1904676263 to pool.
+[2025-02-21 17:44:29] DEBUG JdbcTransaction:143 - Opening JDBC Connection
+[2025-02-21 17:44:29] DEBUG PooledDataSource:448 - Checked out connection 1904676263 from pool.
+[2025-02-21 17:44:29] DEBUG save:135 - ==>  Preparing: INSERT INTO Army.unit_missions (missions_id, units_id) VALUES (?, ?)
+[2025-02-21 17:44:29] DEBUG save:135 - ==> Parameters: 1(Integer), 2(Long)
+[2025-02-21 17:44:30] DEBUG save:135 - <==    Updates: 1
+[2025-02-21 17:44:30] DEBUG JdbcTransaction:97 - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@71870da7]
+[2025-02-21 17:44:30] DEBUG PooledDataSource:409 - Returned connection 1904676263 to pool.
+[2025-02-21 17:44:30] INFO  UnitServiceFacade:43 - Unit and mission successfully created and linked.
+[2025-02-21 17:44:30] DEBUG JdbcTransaction:143 - Opening JDBC Connection
+[2025-02-21 17:44:30] DEBUG PooledDataSource:448 - Checked out connection 1904676263 from pool.
+[2025-02-21 17:44:30] DEBUG JdbcTransaction:107 - Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@71870da7]
+[2025-02-21 17:44:30] DEBUG getMissionsByUnitId:135 - ==>  Preparing: SELECT * FROM Army.unit_missions WHERE units_id = ?
+[2025-02-21 17:44:30] DEBUG getMissionsByUnitId:135 - ==> Parameters: 1(Long)
+[2025-02-21 17:44:30] DEBUG getMissionsByUnitId:135 - <==      Total: 0
+[2025-02-21 17:44:30] DEBUG JdbcTransaction:130 - Resetting autocommit to true on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@71870da7]
+[2025-02-21 17:44:30] DEBUG JdbcTransaction:97 - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@71870da7]
+[2025-02-21 17:44:30] DEBUG PooledDataSource:409 - Returned connection 1904676263 to pool.
+[2025-02-21 17:44:30] DEBUG JdbcTransaction:143 - Opening JDBC Connection
+[2025-02-21 17:44:30] DEBUG PooledDataSource:448 - Checked out connection 1904676263 from pool.
+[2025-02-21 17:44:30] DEBUG deleteByUnitId:135 - ==>  Preparing: DELETE FROM Army.unit_missions WHERE units_id = ?
+[2025-02-21 17:44:30] DEBUG deleteByUnitId:135 - ==> Parameters: 1(Long)
+[2025-02-21 17:44:30] DEBUG deleteByUnitId:135 - <==    Updates: 0
+[2025-02-21 17:44:30] DEBUG JdbcTransaction:97 - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@71870da7]
+[2025-02-21 17:44:30] DEBUG PooledDataSource:409 - Returned connection 1904676263 to pool.
+[2025-02-21 17:44:30] DEBUG JdbcTransaction:143 - Opening JDBC Connection
+[2025-02-21 17:44:30] DEBUG PooledDataSource:448 - Checked out connection 1904676263 from pool.
+[2025-02-21 17:44:30] DEBUG removeById:135 - ==>  Preparing: DELETE FROM Army.units WHERE id = ?
+[2025-02-21 17:44:30] DEBUG removeById:135 - ==> Parameters: 1(Long)
+[2025-02-21 17:44:31] DEBUG removeById:135 - <==    Updates: 0
+[2025-02-21 17:44:31] DEBUG JdbcTransaction:97 - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@71870da7]
+[2025-02-21 17:44:31] DEBUG PooledDataSource:409 - Returned connection 1904676263 to pool.
+[2025-02-21 17:44:31] INFO  UnitServiceFacade:53 - Unit and its missions successfully deleted.
+[2025-02-21 17:44:31] INFO  run:224 - Basic Soldier:
+[2025-02-21 17:44:31] INFO  BasicSoldier:10 - Soldier attacks with a basic rifle.
+[2025-02-21 17:44:31] INFO  run:228 - Sniper Soldier:
+[2025-02-21 17:44:31] INFO  BasicSoldier:10 - Soldier attacks with a basic rifle.
+[2025-02-21 17:44:31] INFO  SniperSoldier:15 - Sniper Soldier takes an accurate long-range shot.
+[2025-02-21 17:44:31] INFO  run:232 - Grenadier Soldier:
+[2025-02-21 17:44:31] INFO  BasicSoldier:10 - Soldier attacks with a basic rifle.
+[2025-02-21 17:44:31] INFO  GrenadierSoldier:15 - Grenadier Soldier throws a grenade.
+[2025-02-21 17:44:31] INFO  run:236 - Elite Soldier (Sniper + Grenadier):
+[2025-02-21 17:44:31] INFO  BasicSoldier:10 - Soldier attacks with a basic rifle.
+[2025-02-21 17:44:31] INFO  GrenadierSoldier:15 - Grenadier Soldier throws a grenade.
+[2025-02-21 17:44:31] INFO  SniperSoldier:15 - Sniper Soldier takes an accurate long-range shot.
+[2025-02-21 17:44:31] INFO  MissionProxy:20 - ACCESS DENIED: You do not have clearance for this mission.
+[2025-02-21 17:44:31] INFO  SecretMission:16 - Executing secret mission: Operation Blackout
+[2025-02-21 17:44:31] INFO  SoldierUnit:21 - Infantry: 
+[2025-02-21 17:44:31] INFO  MeleeAttack:10 - Attacking with close-range melee combat!
+[2025-02-21 17:44:31] INFO  SoldierUnit:21 - Infantry: 
+[2025-02-21 17:44:31] INFO  RangedAttack:10 - Attacking with long-range weapons!
+[2025-02-21 17:44:31] INFO  SoldierUnit:21 - Special Ops: 
+[2025-02-21 17:44:31] INFO  StealthAttack:10 - Attacking from the shadows undetected!
+[2025-02-21 17:44:31] INFO  UnitView:9 - === Unit Details ===
+[2025-02-21 17:44:31] INFO  UnitView:10 - ID: 1
+[2025-02-21 17:44:31] INFO  UnitView:11 - Name: Alpha Squad
+[2025-02-21 17:44:31] INFO  UnitView:12 - ====================
+[2025-02-21 17:44:31] INFO  UnitView:9 - === Unit Details ===
+[2025-02-21 17:44:31] INFO  UnitView:10 - ID: 1
+[2025-02-21 17:44:31] INFO  UnitView:11 - Name: Bravo Squad
+[2025-02-21 17:44:31] INFO  UnitView:12 - ====================

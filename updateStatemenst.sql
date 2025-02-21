@@ -1,0 +1,10 @@
+UPDATE Army.soldiers SET first_name = 'Jack' WHERE id = 1;
+UPDATE Army.soldiers SET last_name = 'Johnson' WHERE id = 2;
+UPDATE Army.training_programs SET program_name = 'Sniper Training' WHERE id = 3;
+UPDATE Army.ranks SET rank_name = 'Colonel' WHERE id = 5;
+UPDATE Army.units SET unit_name = 'Special Forces' WHERE id = 4;
+UPDATE Army.mediacal_records SET blood_type = 'B+' WHERE id = 3;
+UPDATE Army.departments SET department_name = 'Cyber Operations' WHERE id = 4;
+UPDATE Army.divisions SET division_name = 'Foxtrot Division' WHERE id = 2;
+UPDATE Army.missions SET location = 'Desert' WHERE id = 1;
+UPDATE Army.equipment SET equipment_type = 'Armor' WHERE id = 3;

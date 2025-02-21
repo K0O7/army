@@ -54,6 +54,15 @@ import solvd.army.strategy.StealthAttack;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/*
+ * SOLID
+ * S - classes like ConnectionPool, MyBatisUtil, Soldier or SoldierDao have single responsibility and only one reason to change
+ * O - patterns like Strategy or Proxy provide abilyty to change class behaviour at runtime withot modifying their code so classes implementing them are open to extension but closed to modification
+ * L - Classes like AbstractMySqlDao satisfy the LSP
+ * I - all classes implementing interface form Dao hierarchy satisfy ISP
+ * D - Classes like AbstractMySqlDao, implementing Proxy pattern satisfy DIP
+ */
+
 public class run {
 	
 	private static final Logger logger = LogManager.getLogger(run.class);
@@ -324,16 +333,3 @@ public class run {
         }
     }
 }
-
-
-/*
-uwagi
-jak robienie adnotacji do JAXB, Jackson, itd robi kopie klasy z innymi adnotacjami
-
-pytania
-czy taki wrapper jest dobry(abstractMySqlDao)?
-jak najlepiej łączyc klasy stworzone w osobnych dao?, jako metoda osobnej klasy? czy w jednym z dao przez przekazanie odpowiednich info? czy SoldierDao powinien wywolywac metody do znalezienia odpowiednich danych z innych dao?
-
-todo
-Refactor code for the current project to satisfy SOLID principles.
-*/

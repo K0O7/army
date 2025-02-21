@@ -1,0 +1,10 @@
+DELETE FROM Army.soldier_training WHERE id = 3;
+DELETE FROM Army.mediacal_records WHERE id = 2;
+DELETE FROM Army.allergies WHERE id = 1;
+DELETE FROM Army.ranks WHERE id = 5;
+DELETE FROM Army.departments WHERE id = 3;
+DELETE FROM Army.soldier_training WHERE id = 4;
+DELETE FROM Army.mediacal_records WHERE id = 3;
+DELETE FROM Army.allergies WHERE id = 2;
+DELETE FROM Army.ranks WHERE id = 1;
+DELETE FROM Army.departments WHERE id = 4;
